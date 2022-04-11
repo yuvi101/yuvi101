@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>API - Tag - The Random Forest</title>
+        <link>http://therandomforest.github.io/tags/api/</link>
+        <description>API - Tag - The Random Forest</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 11 Apr 2022 11:21:51 &#43;0300</lastBuildDate><atom:link href="http://therandomforest.github.io/tags/api/" rel="self" type="application/rss+xml" /><item>
+    <title>Building a Spotify Recommendation System</title>
+    <link>http://therandomforest.github.io/posts/spotify/</link>
+    <pubDate>Mon, 11 Apr 2022 11:21:51 &#43;0300</pubDate>
+    <author>Author</author>
+    <guid>http://therandomforest.github.io/posts/spotify/</guid>
+    <description><![CDATA[In this post I&rsquo;ll show the steps I took in order to build my own spotify recommendation system that will automaticlly add new playlists to my account based on the songs I liked. Using Spotify API and gathering data Importing all the packages we are gonna need:
+import spotipy from sklearn.neighbors import KNeighborsClassifier from spotipy.oauth2 import SpotifyOAuth from spotipy.oauth2 import SpotifyClientCredentials import pandas as pd import sklearn import matplotlib.pyplot as plt from sklearn.]]></description>
+</item></channel>
+</rss>

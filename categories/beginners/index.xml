@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Beginners - Category - The Random Forest</title>
+        <link>http://therandomforest.github.io/categories/beginners/</link>
+        <description>Beginners - Category - The Random Forest</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 09 Sep 2021 09:43:47 &#43;0300</lastBuildDate><atom:link href="http://therandomforest.github.io/categories/beginners/" rel="self" type="application/rss+xml" /><item>
+    <title>Are You a Hard Worker Or Just Lucky?</title>
+    <link>http://therandomforest.github.io/posts/luck/</link>
+    <pubDate>Thu, 09 Sep 2021 09:43:47 &#43;0300</pubDate>
+    <author>Author</author>
+    <guid>http://therandomforest.github.io/posts/luck/</guid>
+    <description><![CDATA[<p>Have you ever wondered why are some people more successful than others?
+Is it they’ve got a better education, more connections? Are they more hard-working? Or maybe they are just luckier!?</p>]]></description>
+</item></channel>
+</rss>

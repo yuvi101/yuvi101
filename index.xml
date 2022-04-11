@@ -1,0 +1,39 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>The Random Forest</title>
+        <link>http://therandomforest.github.io/</link>
+        <description>About LoveIt Theme</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 11 Apr 2022 11:21:51 &#43;0300</lastBuildDate>
+            <atom:link href="http://therandomforest.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>Building a Spotify Recommendation System</title>
+    <link>http://therandomforest.github.io/posts/spotify/</link>
+    <pubDate>Mon, 11 Apr 2022 11:21:51 &#43;0300</pubDate>
+    <author>Author</author>
+    <guid>http://therandomforest.github.io/posts/spotify/</guid>
+    <description><![CDATA[In this post I&rsquo;ll show the steps I took in order to build my own spotify recommendation system that will automaticlly add new playlists to my account based on the songs I liked. Using Spotify API and gathering data Importing all the packages we are gonna need:
+import spotipy from sklearn.neighbors import KNeighborsClassifier from spotipy.oauth2 import SpotifyOAuth from spotipy.oauth2 import SpotifyClientCredentials import pandas as pd import sklearn import matplotlib.pyplot as plt from sklearn.]]></description>
+</item><item>
+    <title>Building a Neural Network From Scratch</title>
+    <link>http://therandomforest.github.io/posts/digit_recognition/</link>
+    <pubDate>Thu, 23 Dec 2021 08:48:18 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>http://therandomforest.github.io/posts/digit_recognition/</guid>
+    <description><![CDATA[<p>In this project we will learn what is an artificial neural network and how it can be used to train ML models.</p>]]></description>
+</item><item>
+    <title>Dementia Prediction</title>
+    <link>http://therandomforest.github.io/posts/dementia_prediction/</link>
+    <pubDate>Tue, 14 Sep 2021 09:43:47 &#43;0300</pubDate>
+    <author>Author</author>
+    <guid>http://therandomforest.github.io/posts/dementia_prediction/</guid>
+    <description><![CDATA[<p>This article will deal with an attempt to build a model for predicting dementia as well as a brief description about this condition.</p>]]></description>
+</item><item>
+    <title>Are You a Hard Worker Or Just Lucky?</title>
+    <link>http://therandomforest.github.io/posts/luck/</link>
+    <pubDate>Thu, 09 Sep 2021 09:43:47 &#43;0300</pubDate>
+    <author>Author</author>
+    <guid>http://therandomforest.github.io/posts/luck/</guid>
+    <description><![CDATA[<p>Have you ever wondered why are some people more successful than others?
+Is it they’ve got a better education, more connections? Are they more hard-working? Or maybe they are just luckier!?</p>]]></description>
+</item></channel>
+</rss>

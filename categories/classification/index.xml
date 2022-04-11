@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Classification - Category - The Random Forest</title>
+        <link>http://therandomforest.github.io/categories/classification/</link>
+        <description>Classification - Category - The Random Forest</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 14 Sep 2021 09:43:47 &#43;0300</lastBuildDate><atom:link href="http://therandomforest.github.io/categories/classification/" rel="self" type="application/rss+xml" /><item>
+    <title>Dementia Prediction</title>
+    <link>http://therandomforest.github.io/posts/dementia_prediction/</link>
+    <pubDate>Tue, 14 Sep 2021 09:43:47 &#43;0300</pubDate>
+    <author>Author</author>
+    <guid>http://therandomforest.github.io/posts/dementia_prediction/</guid>
+    <description><![CDATA[<p>This article will deal with an attempt to build a model for predicting dementia as well as a brief description about this condition.</p>]]></description>
+</item></channel>
+</rss>
