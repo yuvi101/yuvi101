@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Dementia Prediction - The Random Forest</title><meta name="Description" content="About LoveIt Theme"><meta property="og:title" content="Dementia Prediction" />
+<meta property="og:description" content="This article will deal with an attempt to build a model for predicting dementia as well as a brief description about this condition." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yuvi101.github.io/therandomforest.github.io/posts/dementia_prediction/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-14T09:43:47+03:00" />
+<meta property="article:modified_time" content="2021-09-14T09:43:47+03:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dementia Prediction"/>
+<meta name="twitter:description" content="This article will deal with an attempt to build a model for predicting dementia as well as a brief description about this condition."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/static/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://yuvi101.github.io/therandomforest.github.io/posts/dementia_prediction/" /><link rel="prev" href="https://yuvi101.github.io/therandomforest.github.io/posts/luck/" /><link rel="next" href="https://yuvi101.github.io/therandomforest.github.io/posts/digit_recognition/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/therandomforest.github.io/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Dementia Prediction",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/yuvi101.github.io\/therandomforest.github.io\/posts\/dementia_prediction\/"
+        },"image": ["https:\/\/yuvi101.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Python, Classification","wordcount":  858 ,
+        "url": "https:\/\/yuvi101.github.io\/therandomforest.github.io\/posts\/dementia_prediction\/","datePublished": "2021-09-14T09:43:47+03:00","dateModified": "2021-09-14T09:43:47+03:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/yuvi101.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Yuval"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/therandomforest.github.io/" title="The Random Forest"><span class="header-title-pre"><i class='fas fa-tree'></i></span>The Random Forest</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/therandomforest.github.io/therandomforest.github.io/posts/"> Posts </a><a class="menu-item" href="/therandomforest.github.io/therandomforest.github.io/tags/"> Tags </a><a class="menu-item" href="/therandomforest.github.io/therandomforest.github.io/categories/"> Categories </a><a class="menu-item" href="/therandomforest.github.io/therandomforest.github.io/categories/documentation/"> Docs </a><a class="menu-item" href="/therandomforest.github.io/therandomforest.github.io/about/"> About </a><a class="menu-item" href="/therandomforest.github.io/" title="GitHub"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/therandomforest.github.io/" title="The Random Forest"><span class="header-title-pre"><i class='fas fa-tree'></i></span>The Random Forest</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/therandomforest.github.io/therandomforest.github.io/posts/" title="">Posts</a><a class="menu-item" href="/therandomforest.github.io/therandomforest.github.io/tags/" title="">Tags</a><a class="menu-item" href="/therandomforest.github.io/therandomforest.github.io/categories/" title="">Categories</a><a class="menu-item" href="/therandomforest.github.io/therandomforest.github.io/categories/documentation/" title="">Docs</a><a class="menu-item" href="/therandomforest.github.io/therandomforest.github.io/about/" title="">About</a><a class="menu-item" href="/therandomforest.github.io/" title="GitHub"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Dementia Prediction</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/therandomforest.github.io/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Yuval</a></span>&nbsp;<span class="post-category">included in <a href="/therandomforest.github.io/categories/classification/"><i class="far fa-folder fa-fw"></i>Classification</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-14">2021-09-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;858 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;<span id="/therandomforest.github.io/posts/dementia_prediction/" class="leancloud_visitors" data-flag-title="Dementia Prediction">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#treatment-and-care">Treatment and care</a></li>
+        <li><a href="#understanding-the-data">Understanding The Data</a></li>
+        <li><a href="#data-cleaning-and-preprocessing">Data Cleaning and Preprocessing</a></li>
+        <li><a href="#data-visualization">Data Visualization</a></li>
+        <li><a href="#model-creation">Model creation</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>This article will deal with an attempt to build a model for predicting dementia as well as a brief description about this condition.</p>
+<p><img
+        class="lazyload"
+        src="/therandomforest.github.io/svg/loading.min.svg"
+        data-src="https://images.unsplash.com/photo-1456162018889-1d2b969f7084?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1352&amp;q=80"
+        data-srcset="https://images.unsplash.com/photo-1456162018889-1d2b969f7084?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1352&amp;q=80, https://images.unsplash.com/photo-1456162018889-1d2b969f7084?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1352&amp;q=80 1.5x, https://images.unsplash.com/photo-1456162018889-1d2b969f7084?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1352&amp;q=80 2x"
+        data-sizes="auto"
+        alt="https://images.unsplash.com/photo-1456162018889-1d2b969f7084?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1352&amp;q=80"
+        title="Old woman" /></p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The data used in this post contains medical terminology which is helpful to know in order to better understand the different parameters. However its not mandatory to know it in depth.</div>
+        </div>
+    </div>
+<p><strong>Dementia</strong> is a syndrome – usually of a chronic or progressive nature – in which there is deterioration in cognitive function (i.e. the ability
+to process thought) beyond what might be expected from normal ageing. It affects memory, thinking, orientation, comprehension, calculation, learning capacity, language, and judgement.<br>
+according to World Heath Organization: <a href="https://www.who.int/news-room/fact-sheets/detail/dementia" target="_blank" rel="noopener noreffer">https://www.who.int/news-room/fact-sheets/detail/dementia</a></p>
+<h3 id="treatment-and-care">Treatment and care</h3>
+<p>There is no treatment currently available to cure dementia or to alter its progressive course. Numerous new treatments are being investigated in various stages of clinical trials.
+However, with early detection much can be offered to support and improve the lives of people with dementia, their carers, and families.</p>
+<p>This post is all about data analysis, I will use the below data set in order to find some interesting insights about dementia syndrome.</p>
+<h3 id="understanding-the-data">Understanding The Data</h3>
+<p>The dataset I used is <strong>Cross-sectional MRI Data in Young, Middle Aged, Nondemented, and Demented Older Adults:</strong> This set consists of a cross-sectional collection of 416 subjects aged 18 to 96. For each subject, 3 or 4 individual T1-weighted MRI scans obtained in single scan sessions are included. The subjects are all right-handed and include both men and women. 100 of the included subjects over the age of 60 have been clinically diagnosed with very mild to moderate Alzheimer’s disease (AD). Additionally, a reliability data set is included containing 20 nondemented subjects imaged on a subsequent visit within 90 days of their initial session.
+Link to the dataset: <a href="https://www.kaggle.com/jboysen/mri-and-alzheimers" target="_blank" rel="noopener noreffer">https://www.kaggle.com/jboysen/mri-and-alzheimers</a></p>
+<h4 id="the-attributes">The attributes:</h4>
+<p><strong>Subject ID</strong> - patient&rsquo;s Identification<br>
+<strong>MRI ID</strong> -  MRI Exam Identification<br>
+<strong>M/F</strong> - Gender<br>
+<strong>Hand</strong> - Dominant Hand<br>
+<strong>Age</strong> - Age in years<br>
+<strong>Educ</strong> - Education level where 1 is the lowest level and 5 is the highest<br>
+<strong>SES</strong> - Socioeconomic status where 1 is the lowest status and 5 is the highest<br>
+<strong>MMSE</strong> - Mini Mental State Examination, in this test any score of 24 or more (out of 30) indicates a normal cognition. Below this, scores can indicate severe (≤9 points), moderate (10–18 points) or mild (19–23 points) cognitive impairment.<br>
+<strong>CDR</strong> - Clinical Dementia Rating. Ratings are assigned on a 0–5 point scale, (0 = absent; 0.5 = questionable;  1= present, but mild;  2 = moderate;  3 = severe;  4 = profound;  5 = terminal).<br>
+<strong>eTIV</strong> - Estimated Total Intracranial Volume (of the brain).<br>
+<strong>nWBV</strong> - Normalize Whole Brain Volume. Used to measure the progression of brain atrophy. expressed as decimal numbers between 0.64 to 0.89.<br>
+<strong>ASF</strong> - Atlas Scaling Factor is defined as the volume-scaling factor required to match each individual to the atlas target. Because atlas normalization equates to head size, the ASF should be proportional to eTIV.<br>
+<strong>Delay</strong> - unknown, no description had been provided. Since 99% of the column&rsquo;s values are NA, we won&rsquo;t use it.</p>
+<h3 id="data-cleaning-and-preprocessing">Data Cleaning and Preprocessing</h3>
+<p>First of all we will load the data set and some useful Python packages, then we will clean the data.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../input/mri-and-alzheimers/oasis_longitudinal.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div><p><img
+        class="lazyload"
+        src="/therandomforest.github.io/svg/loading.min.svg"
+        data-src="/posts/df_head.png"
+        data-srcset="/posts/df_head.png, /posts/df_head.png 1.5x, /posts/df_head.png 2x"
+        data-sizes="auto"
+        alt="/posts/df_head.png"
+        title="df.head()" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1">#We will change the values of the group column to 0 for Nondemented and 1 for Demented</span>
+<span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="s1">&#39;Nondemented&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pad&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="s1">&#39;Demented&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pad&#39;</span><span class="p">)</span>
+
+<span class="c1">#Checking if there are a left handed patient</span>
+<span class="n">df</span><span class="o">.</span><span class="n">Hand</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="c1">#Since this data set only right handed patients were examined so the #&#34;hand&#34; column does not contribute any valuable data for the prediction.</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Hand&#39;</span><span class="p">])</span>
+<span class="c1"># Checking for null values</span>
+<span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div><p><img
+        class="lazyload"
+        src="/therandomforest.github.io/svg/loading.min.svg"
+        data-src="/posts/is_null1.png"
+        data-srcset="/posts/is_null1.png, /posts/is_null1.png 1.5x, /posts/is_null1.png 2x"
+        data-sizes="auto"
+        alt="/posts/is_null1.png"
+        title="df.isnull()" /></p>
+<p>We can now see that <strong>SES</strong> and <strong>MMSE</strong> columns have 19 and 2 null values respectively.
+Remember that <strong>SES</strong> value stands for &lsquo;Socioeconomic status&rsquo;, since our data contains 373 entries, dropping out 19-21 rows would mean loosing ~5% of data. Another reason to not drop those rows is that people with low socioeconomic status are more likely to hide this information, the resulting collection of data would have a series of missing values. To prevent our data becoming smaller and more biased we&rsquo;ll use the <strong>mean of the SES</strong> score to fill out the nulls.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="n">mean_value</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;SES&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Replace nulls in column SES with the mean of values in the same column</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;SES&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">mean_value</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div><p><img
+        class="lazyload"
+        src="/therandomforest.github.io/svg/loading.min.svg"
+        data-src="/posts/is_null2.png"
+        data-srcset="/posts/is_null2.png, /posts/is_null2.png 1.5x, /posts/is_null2.png 2x"
+        data-sizes="auto"
+        alt="/posts/is_null2.png"
+        title="df.isnull()" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="c1">#drop the remaining 2 rows containing null values</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</code></pre></div><h3 id="data-visualization">Data Visualization</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="c1"># male=0 &amp; female=1</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;M/F&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;pie&#39;</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;gold&#39;</span><span class="p">,</span><span class="s1">&#39;tomato&#39;</span><span class="p">],</span>
+<span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Distribution of Male vs Female&#39;</span><span class="p">))</span>
+</code></pre></div><p><img
+        class="lazyload"
+        src="/therandomforest.github.io/svg/loading.min.svg"
+        data-src="/posts/M_F.png"
+        data-srcset="/posts/M_F.png, /posts/M_F.png 1.5x, /posts/M_F.png 2x"
+        data-sizes="auto"
+        alt="/posts/M_F.png"
+        title="M/F()" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1">#where 0 =nondimented, 1 =dimented</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;pie&#39;</span><span class="p">,</span><span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">],</span>
+<span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Distribution of Dimented vs Nondimented&#39;</span><span class="p">)</span>
+</code></pre></div><p><img
+        class="lazyload"
+        src="/therandomforest.github.io/svg/loading.min.svg"
+        data-src="/posts/dimented_vs_nondimented.png"
+        data-srcset="/posts/dimented_vs_nondimented.png, /posts/dimented_vs_nondimented.png 1.5x, /posts/dimented_vs_nondimented.png 2x"
+        data-sizes="auto"
+        alt="/posts/dimented_vs_nondimented.png"
+        title="dimented_vs_nondimented" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;CDR&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;M/F&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;hls&#39;</span><span class="p">)</span>
+</code></pre></div><p><img
+        class="lazyload"
+        src="/therandomforest.github.io/svg/loading.min.svg"
+        data-src="/posts/cdr_age_mf.png"
+        data-srcset="/posts/cdr_age_mf.png, /posts/cdr_age_mf.png 1.5x, /posts/cdr_age_mf.png 2x"
+        data-sizes="auto"
+        alt="/posts/cdr_age_mf.png"
+        title="CDR vs Age coloured by M/F" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;CDR&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Group&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;hls&#39;</span><span class="p">)</span>
+</code></pre></div><p><img
+        class="lazyload"
+        src="/therandomforest.github.io/svg/loading.min.svg"
+        data-src="/posts/cdr_age_group.png"
+        data-srcset="/posts/cdr_age_group.png, /posts/cdr_age_group.png 1.5x, /posts/cdr_age_group.png 2x"
+        data-sizes="auto"
+        alt="/posts/cdr_age_group.png"
+        title="CDR vs Age coloured by Group" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;CDR&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;EDUC&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;CDR&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;hls&#39;</span><span class="p">)</span>
+</code></pre></div><p><img
+        class="lazyload"
+        src="/therandomforest.github.io/svg/loading.min.svg"
+        data-src="/posts/cdr_educ_cdr.png"
+        data-srcset="/posts/cdr_educ_cdr.png, /posts/cdr_educ_cdr.png 1.5x, /posts/cdr_educ_cdr.png 2x"
+        data-sizes="auto"
+        alt="/posts/cdr_educ_cdr.png"
+        title="CDR vs Education coloured by CDR" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;SES&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;MMSE&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Group&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;hls&#39;</span><span class="p">)</span>
+</code></pre></div><p><img
+        class="lazyload"
+        src="/therandomforest.github.io/svg/loading.min.svg"
+        data-src="/posts/sse_mmse_group.png"
+        data-srcset="/posts/sse_mmse_group.png, /posts/sse_mmse_group.png 1.5x, /posts/sse_mmse_group.png 2x"
+        data-sizes="auto"
+        alt="/posts/sse_mmse_group.png"
+        title="SES vs MMSE coloured by Group" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;CDR&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;ASF&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;hls&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;CDR&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;nWBV&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;hls&#39;</span><span class="p">)</span>
+</code></pre></div><p><img
+        class="lazyload"
+        src="/therandomforest.github.io/svg/loading.min.svg"
+        data-src="/posts/asf_bwbv_cdr.png"
+        data-srcset="/posts/asf_bwbv_cdr.png, /posts/asf_bwbv_cdr.png 1.5x, /posts/asf_bwbv_cdr.png 2x"
+        data-sizes="auto"
+        alt="/posts/asf_bwbv_cdr.png"
+        title="CDR vs nWBV and CDR vs ASF coloured by CDR" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;CDR&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;MMSE&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Group&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;hls&#39;</span><span class="p">)</span>
+</code></pre></div><p><img
+        class="lazyload"
+        src="/therandomforest.github.io/svg/loading.min.svg"
+        data-src="/posts/MMSE_CDR_colored_by_CDR.png"
+        data-srcset="/posts/MMSE_CDR_colored_by_CDR.png, /posts/MMSE_CDR_colored_by_CDR.png 1.5x, /posts/MMSE_CDR_colored_by_CDR.png 2x"
+        data-sizes="auto"
+        alt="/posts/MMSE_CDR_colored_by_CDR.png"
+        title="MMSE vs CDR coloured by CDR" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div><p><img
+        class="lazyload"
+        src="/therandomforest.github.io/svg/loading.min.svg"
+        data-src="/posts/heatmap.png"
+        data-srcset="/posts/heatmap.png, /posts/heatmap.png 1.5x, /posts/heatmap.png 2x"
+        data-sizes="auto"
+        alt="/posts/heatmap.png"
+        title="heatmap" />
+Since eTIV and ASF have very strong negative correlation (-0.99), we&rsquo;ll drop one of those columns.</p>
+<h3 id="model-creation">Model creation</h3>
+<p>Here comes the interesting part!</p>
+<h6 id="determining-the-target-column">Determining the target column</h6>
+<h6 id="splitting-the-data-to-train-and-test-sets">Splitting the data to train and test sets</h6>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">x_train</span><span class="p">,</span><span class="n">x_test</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-09-14</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://yuvi101.github.io/therandomforest.github.io/posts/dementia_prediction/" data-title="Dementia Prediction" data-hashtags="Python,Classification"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://yuvi101.github.io/therandomforest.github.io/posts/dementia_prediction/" data-hashtag="Python"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://yuvi101.github.io/therandomforest.github.io/posts/dementia_prediction/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://yuvi101.github.io/therandomforest.github.io/posts/dementia_prediction/" data-title="Dementia Prediction"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://yuvi101.github.io/therandomforest.github.io/posts/dementia_prediction/" data-title="Dementia Prediction"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://yuvi101.github.io/therandomforest.github.io/posts/dementia_prediction/" data-title="Dementia Prediction"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/therandomforest.github.io/tags/python/">Python</a>,&nbsp;<a href="/therandomforest.github.io/tags/classification/">Classification</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/therandomforest.github.io/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/therandomforest.github.io/posts/luck/" class="prev" rel="prev" title="Are You a Hard Worker Or Just Lucky?"><i class="fas fa-angle-left fa-fw"></i>Are You a Hard Worker Or Just Lucky?</a>
+            <a href="/therandomforest.github.io/posts/digit_recognition/" class="next" rel="next" title="Building a Neural Network From Scratch">Building a Neural Network From Scratch<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/therandomforest.github.io/" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/therandomforest.github.io/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@13.0.0/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/therandomforest.github.io/js/theme.min.js"></script></body>
+</html>
