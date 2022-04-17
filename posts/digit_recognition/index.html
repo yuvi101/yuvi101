@@ -162,10 +162,10 @@ We can refer to this as a linear function:<br>
 <img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/input_output.png"
-        data-srcset="/posts/input_output.png, /posts/input_output.png 1.5x, /posts/input_output.png 2x"
+        data-src="input_output.png"
+        data-srcset="input_output.png, input_output.png 1.5x, input_output.png 2x"
         data-sizes="auto"
-        alt="/posts/input_output.png"
+        alt="input_output.png"
         title="input and output neurons" /></p>
 <h3 id="designing-a-neural-network-to-fit-our-needs">Designing a neural network to fit our needs</h3>
 <p>The data set we are going to use in this example consists of 42,000 training examples of handwritten digit images, each of size 28x28 pixels, where each pixel has a value between 0 and 255 representing the lightness and darkness of that pixel. In addition there is a label vector representing the true digit that was drawn.</p>
@@ -173,10 +173,10 @@ We can refer to this as a linear function:<br>
 <img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/net_struct.png"
-        data-srcset="/posts/net_struct.png, /posts/net_struct.png 1.5x, /posts/net_struct.png 2x"
+        data-src="net_struct.png"
+        data-srcset="net_struct.png, net_struct.png 1.5x, net_struct.png 2x"
         data-sizes="auto"
-        alt="/posts/net_struct.png"
+        alt="net_struct.png"
         title="network&amp;rsquo;s structure" /></p>
 <ul>
 <li>First layer: consists of 28x28 = 784 pixels</li>
@@ -187,10 +187,10 @@ We can refer to this as a linear function:<br>
 <img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/activ_relu_weight.png"
-        data-srcset="/posts/activ_relu_weight.png, /posts/activ_relu_weight.png 1.5x, /posts/activ_relu_weight.png 2x"
+        data-src="activ_relu_weight.png"
+        data-srcset="activ_relu_weight.png, /posts/activ_relu_weight.png 1.5x, /posts/activ_relu_weight.png 2x"
         data-sizes="auto"
-        alt="/posts/activ_relu_weight.png"
+        alt="activ_relu_weight.png"
         title="explenation" /></p>
 <p>ReLU is an activation function, we will dive deeper into in the next section.
 We have 42,000 of this images, we are going to represent in a 784x42,000 matrix, each column is a representation of an image&rsquo;s pixels values, we&rsquo;ll call it <strong>X</strong>.<br>
@@ -199,18 +199,18 @@ We have 42,000 of this images, we are going to represent in a 784x42,000 matrix,
 <p><img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/calculations.png"
-        data-srcset="/posts/calculations.png, /posts/calculations.png 1.5x, /posts/calculations.png 2x"
+        data-src="calculations.png"
+        data-srcset="calculations.png, calculations.png 1.5x, calculations.png 2x"
         data-sizes="auto"
-        alt="/posts/calculations.png"
+        alt="calculations.png"
         title="/posts/calculations.png" /></p>
 <p><img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/ReLU.png"
-        data-srcset="/posts/ReLU.png, /posts/ReLU.png 1.5x, /posts/ReLU.png 2x"
+        data-src="ReLU.png"
+        data-srcset="ReLU.png, ReLU.png 1.5x, ReLU.png 2x"
         data-sizes="auto"
-        alt="/posts/ReLU.png"
+        alt="ReLU.png"
         title="ReLU" /></p>
 <h3 id="what-are-we-looking-for">What are we looking for?</h3>
 <h3 id="implementation">Implementation</h3>
