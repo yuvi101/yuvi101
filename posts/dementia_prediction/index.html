@@ -177,10 +177,10 @@ Link to the dataset: <a href="https://www.kaggle.com/jboysen/mri-and-alzheimers"
 </code></pre></div><p><img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/df_head.png"
-        data-srcset="/posts/df_head.png, /posts/df_head.png 1.5x, /posts/df_head.png 2x"
+        data-src="df_head.png"
+        data-srcset="df_head.png, df_head.png 1.5x, df_head.png 2x"
         data-sizes="auto"
-        alt="/posts/df_head.png"
+        alt="df_head.png"
         title="df.head()" /></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1">#We will change the values of the group column to 0 for Nondemented and 1 for Demented</span>
 <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="s1">&#39;Nondemented&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pad&#39;</span><span class="p">)</span>
@@ -196,9 +196,9 @@ Link to the dataset: <a href="https://www.kaggle.com/jboysen/mri-and-alzheimers"
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
         data-src="/posts/is_null1.png"
-        data-srcset="/posts/is_null1.png, /posts/is_null1.png 1.5x, /posts/is_null1.png 2x"
+        data-srcset="is_null1.png, is_null1.png 1.5x, is_null1.png 2x"
         data-sizes="auto"
-        alt="/posts/is_null1.png"
+        alt="is_null1.png"
         title="df.isnull()" /></p>
 <p>We can now see that <strong>SES</strong> and <strong>MMSE</strong> columns have 19 and 2 null values respectively.
 Remember that <strong>SES</strong> value stands for &lsquo;Socioeconomic status&rsquo;, since our data contains 373 entries, dropping out 19-21 rows would mean loosing ~5% of data. Another reason to not drop those rows is that people with low socioeconomic status are more likely to hide this information, the resulting collection of data would have a series of missing values. To prevent our data becoming smaller and more biased we&rsquo;ll use the <strong>mean of the SES</strong> score to fill out the nulls.</p>
@@ -210,10 +210,10 @@ Remember that <strong>SES</strong> value stands for &lsquo;Socioeconomic status&
 </code></pre></div><p><img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/is_null2.png"
-        data-srcset="/posts/is_null2.png, /posts/is_null2.png 1.5x, /posts/is_null2.png 2x"
+        data-src="is_null2.png"
+        data-srcset="is_null2.png, is_null2.png 1.5x, is_null2.png 2x"
         data-sizes="auto"
-        alt="/posts/is_null2.png"
+        alt="is_null2.png"
         title="df.isnull()" /></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="c1">#drop the remaining 2 rows containing null values</span>
 <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -224,10 +224,10 @@ Remember that <strong>SES</strong> value stands for &lsquo;Socioeconomic status&
 </code></pre></div><p><img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/M_F.png"
-        data-srcset="/posts/M_F.png, /posts/M_F.png 1.5x, /posts/M_F.png 2x"
+        data-src="M_F.png"
+        data-srcset="M_F.png, M_F.png 1.5x, M_F.png 2x"
         data-sizes="auto"
-        alt="/posts/M_F.png"
+        alt="M_F.png"
         title="M/F()" /></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1">#where 0 =nondimented, 1 =dimented</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;pie&#39;</span><span class="p">,</span><span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">],</span>
@@ -235,50 +235,50 @@ Remember that <strong>SES</strong> value stands for &lsquo;Socioeconomic status&
 </code></pre></div><p><img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/dimented_vs_nondimented.png"
-        data-srcset="/posts/dimented_vs_nondimented.png, /posts/dimented_vs_nondimented.png 1.5x, /posts/dimented_vs_nondimented.png 2x"
+        data-src="dimented_vs_nondimented.png"
+        data-srcset="dimented_vs_nondimented.png, dimented_vs_nondimented.png 1.5x, dimented_vs_nondimented.png 2x"
         data-sizes="auto"
-        alt="/posts/dimented_vs_nondimented.png"
+        alt="dimented_vs_nondimented.png"
         title="dimented_vs_nondimented" /></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;CDR&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;M/F&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;hls&#39;</span><span class="p">)</span>
 </code></pre></div><p><img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/cdr_age_mf.png"
-        data-srcset="/posts/cdr_age_mf.png, /posts/cdr_age_mf.png 1.5x, /posts/cdr_age_mf.png 2x"
+        data-src="cdr_age_mf.png"
+        data-srcset="cdr_age_mf.png, cdr_age_mf.png 1.5x, cdr_age_mf.png 2x"
         data-sizes="auto"
-        alt="/posts/cdr_age_mf.png"
+        alt="cdr_age_mf.png"
         title="CDR vs Age coloured by M/F" /></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;CDR&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Group&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;hls&#39;</span><span class="p">)</span>
 </code></pre></div><p><img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/cdr_age_group.png"
-        data-srcset="/posts/cdr_age_group.png, /posts/cdr_age_group.png 1.5x, /posts/cdr_age_group.png 2x"
+        data-src="cdr_age_group.png"
+        data-srcset="cdr_age_group.png, cdr_age_group.png 1.5x, cdr_age_group.png 2x"
         data-sizes="auto"
-        alt="/posts/cdr_age_group.png"
+        alt="cdr_age_group.png"
         title="CDR vs Age coloured by Group" /></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;CDR&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;EDUC&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;CDR&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;hls&#39;</span><span class="p">)</span>
 </code></pre></div><p><img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/cdr_educ_cdr.png"
-        data-srcset="/posts/cdr_educ_cdr.png, /posts/cdr_educ_cdr.png 1.5x, /posts/cdr_educ_cdr.png 2x"
+        data-src="cdr_educ_cdr.png"
+        data-srcset="cdr_educ_cdr.png, cdr_educ_cdr.png 1.5x, cdr_educ_cdr.png 2x"
         data-sizes="auto"
-        alt="/posts/cdr_educ_cdr.png"
+        alt="cdr_educ_cdr.png"
         title="CDR vs Education coloured by CDR" /></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;SES&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;MMSE&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Group&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;hls&#39;</span><span class="p">)</span>
 </code></pre></div><p><img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/sse_mmse_group.png"
-        data-srcset="/posts/sse_mmse_group.png, /posts/sse_mmse_group.png 1.5x, /posts/sse_mmse_group.png 2x"
+        data-src="sse_mmse_group.png"
+        data-srcset="sse_mmse_group.png, sse_mmse_group.png 1.5x, sse_mmse_group.png 2x"
         data-sizes="auto"
-        alt="/posts/sse_mmse_group.png"
+        alt="sse_mmse_group.png"
         title="SES vs MMSE coloured by Group" /></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;CDR&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;ASF&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;hls&#39;</span><span class="p">)</span>
@@ -286,20 +286,20 @@ Remember that <strong>SES</strong> value stands for &lsquo;Socioeconomic status&
 </code></pre></div><p><img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/asf_bwbv_cdr.png"
-        data-srcset="/posts/asf_bwbv_cdr.png, /posts/asf_bwbv_cdr.png 1.5x, /posts/asf_bwbv_cdr.png 2x"
+        data-src="asf_bwbv_cdr.png"
+        data-srcset="asf_bwbv_cdr.png, /posts/asf_bwbv_cdr.png 1.5x, /posts/asf_bwbv_cdr.png 2x"
         data-sizes="auto"
-        alt="/posts/asf_bwbv_cdr.png"
+        alt="asf_bwbv_cdr.png"
         title="CDR vs nWBV and CDR vs ASF coloured by CDR" /></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;CDR&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;MMSE&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Group&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;hls&#39;</span><span class="p">)</span>
 </code></pre></div><p><img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/MMSE_CDR_colored_by_CDR.png"
-        data-srcset="/posts/MMSE_CDR_colored_by_CDR.png, /posts/MMSE_CDR_colored_by_CDR.png 1.5x, /posts/MMSE_CDR_colored_by_CDR.png 2x"
+        data-src="MMSE_CDR_colored_by_CDR.png"
+        data-srcset="MMSE_CDR_colored_by_CDR.png, MMSE_CDR_colored_by_CDR.png 1.5x, MMSE_CDR_colored_by_CDR.png 2x"
         data-sizes="auto"
-        alt="/posts/MMSE_CDR_colored_by_CDR.png"
+        alt="MMSE_CDR_colored_by_CDR.png"
         title="MMSE vs CDR coloured by CDR" /></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -307,10 +307,10 @@ Remember that <strong>SES</strong> value stands for &lsquo;Socioeconomic status&
 </code></pre></div><p><img
         class="lazyload"
         src="/therandomforest.github.io/svg/loading.min.svg"
-        data-src="/posts/heatmap.png"
-        data-srcset="/posts/heatmap.png, /posts/heatmap.png 1.5x, /posts/heatmap.png 2x"
+        data-src="heatmap.png"
+        data-srcset="heatmap.png, heatmap.png 1.5x, heatmap.png 2x"
         data-sizes="auto"
-        alt="/posts/heatmap.png"
+        alt="heatmap.png"
         title="heatmap" />
 Since eTIV and ASF have very strong negative correlation (-0.99), we&rsquo;ll drop one of those columns.</p>
 <h3 id="model-creation">Model creation</h3>
